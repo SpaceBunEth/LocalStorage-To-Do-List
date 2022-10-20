@@ -186,3 +186,20 @@ ClearBtn: 'Clear All'
 # Sandbox
 
 1. How Do I use/ save local state
+
+## Answer
+
+    > Following MDN doc page on window.localStorage for JS shows us a clear way of creating,reading,updating, and deleting (CRUD) data in local storage. We can save our items objects in an array to local storage and follow (CRUD) using user input to modify the state.
+
+`example JS code`
+```
+    function createNewItem(key, value) {
+        localStorage.setItem(key,value)
+    }
+```
+---
+
+**Note:** 
+
+Trying to follow the idea of thinking in React. We will write our base HTML/Bootstrap in our App file to help layout our application before we begin to break it up in React Components.
+
