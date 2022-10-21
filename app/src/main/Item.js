@@ -1,11 +1,19 @@
 export default function Item(props) {
-    console.log('Item',props)
+    //console.log('Item',props)
 
-    const filterArr = props.items.filter(x => x.status == props.page.pageCurrent)
+    console.log('ITEM',props.items)
+    const filterArr = props.items.filter((x) => {
+        if(x.status === props.page.pageCurrent){
 
+            console.log('X value in filter',x)
+            return x
+        }else{
+            return
+        }
+    })
+
+    console.log('FilterArr',filterArr)
     const mapArr = filterArr.map((x,i) => {
-        
-        console.log('X',x, i)
 
         return (
             <div className="card m-2" key={x.id}>
@@ -13,8 +21,13 @@ export default function Item(props) {
                 <div className="row justify-content-around p-1">
                     <div 
                         onClick={()=>{
-                            props.setItems([...props.items[i], 'askdj;fasjkdfa'])
+                            
+                            
+                            console.log("CLICK",x,i)
+                            props.setItems({...props.items[i], status: 'Complete'})
+
                         }}
+
                         className='col-3 link-success' 
                         type="button" 
                         >
@@ -55,7 +68,7 @@ export default function Item(props) {
     
 
     return(
-        <div>{mapArr}{console.log(props.items)}</div>
+        <div>{mapArr}</div>
         
         // <>
         //     <div className="card">
