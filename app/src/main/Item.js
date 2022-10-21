@@ -1,18 +1,21 @@
 export default function Item(props) {
     //console.log('Item',props)
 
-    console.log('ITEM',props.items)
     const filterArr = props.items.filter((x) => {
+        if(props.page.pageCurrent === 'All'){
+            return x
+        }
         if(x.status === props.page.pageCurrent){
-
-            console.log('X value in filter',x)
             return x
         }else{
-            return
+            return 
         }
     })
 
-    console.log('FilterArr',filterArr)
+    // function disCheckBtn(){
+    //     if()
+    // }
+
     const mapArr = filterArr.map((x,i) => {
 
         return (
@@ -22,15 +25,15 @@ export default function Item(props) {
                     <div 
                         onClick={()=>{
                             
+                            props.setItems(props.items.map(y => y.id === x.id ? { ...y, status: 'Complete' } : y))
                             
-                            console.log("CLICK",x,i)
-                            props.setItems({...props.items[i], status: 'Complete'})
 
                         }}
 
                         className='col-3 link-success' 
                         type="button" 
                         >
+                            
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-check-square-fill " viewBox="0 0 16 16">
                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
                     </svg>
